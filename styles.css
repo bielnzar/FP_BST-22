@@ -1,80 +1,191 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    color: #f0f0f0;
-    background-color: #1e1e1e;
+    font-family: 'Helvetica', sans-serif; 
     margin: 0;
     padding: 0;
-}
-
-* {
-    box-sizing: border-box;
+    background-color: #1f1f1f;
+    color: #333;
+    line-height: 1.6;
 }
 
 .app-container {
-    max-width: 600px;
-    margin: 100px auto;
-    padding: 20px;
-    border-color: aquamarine;
-    border-radius: 10px;
-    box-shadow: #f0f0f0;
-    border-style: solid
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #292929;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-header h1 {
+header {
     text-align: center;
-    font-size: 2.5em;
-    margin: 10px 0;
-    border-bottom: 2px solid #444;
-    padding-bottom: 5px;
+    margin-bottom: 30px;
+    color: #ffffff; 
+    font-size: 2em;
+    letter-spacing: 1.5px;
 }
 
-.note-creation input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 5px;
+.note-creation {
+    margin-bottom: 30px;
 }
 
-.note-creation textarea {
+#note-title, #search-input {
     width: 100%;
-    height: 150px;
     padding: 10px;
-    margin: 10px 0;
-    font-size: 1.2em;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+#note-title:focus, #search-input:focus {
+    border-color: #ffffff;
+    outline: none;
+}
+
+#note-input {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+#note-input:focus {
+    border-color: #ffffff;
+    outline: none;
+}
+
+#save-note {
+    background-color: #0e0e0e;
+    color: white;
+    padding: 12px 24px;
     border: none;
     border-radius: 6px;
-    resize: none;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.note-creation button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 1.2em;
-    background-color: #4CAF50;
+#save-note:hover {
+    background-color: #388E3C; 
+    transform: translateY(-2px); 
+}
+
+.note-list h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-size: 1.5em;
+}
+
+.note-item {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.note-item:hover {
+    transform: translateY(-2px); 
+}
+
+.note-item h3 {
+    margin: 0;
+    padding-bottom: 4px; 
+    font-size: 1.2em; 
+    color: #333;
+}
+
+.note-item p {
+    margin: 0;
+    padding-left: 2px; 
+    font-size: 1em;
+    color: #555;
+    flex-grow: 1;
+}
+
+
+
+.delete-note {
+    background-color: #0e0e0e;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-note:hover {
+    background-color: #c82333; 
+}
+
+@media (max-width: 600px) {
+    .app-container {
+        padding: 15px;
+    }
+
+    #note-input {
+        height: 100px;
+    }
+
+    header {
+        font-size: 1.5em;
+    }
+
+    .note-item {
+        padding: 10px;
+    }
+
+    .delete-note {
+        padding: 6px 10px;
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 12px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.note-creation button:hover {
-    background-color:#087f00;
-}
-
-.note-search input {
-    width: 100%;
-    padding: 10px;
-    margin: 20px 0;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-}
-
-.note-list {
-    font-size: 1.3em;
-    margin-bottom: 10px;
-    margin-top: 10px;
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
 }
