@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="src/CSS/homepage.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Notes App</h1>
+        </header>
+
+        <div class="note-creation">
+            <input type="text" id="note-title" placeholder="Write your title here... ">
+            <textarea id="note-input" placeholder="Write your note here..."></textarea>
+            <button id="save-note">Save Note</button>
+        </div>
+
+        <div class="note-search">
+            <input type="text" id="search-input" placeholder="Search notes by title...">
+        </div>        
+
+        <div class="note-list">
+            <button id="logout" class="logout">Logout</button>
+            <h2>Saved Notes</h2>
+            <div id="notes"></div>
+        </div>
+    </div>
+
+    <div id="note-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <p id="modal-note-content"></p>
+        </div>
+    </div>
+
+    <script type="module" src="src/JS/homepage.js"></script>
+</body>
+</html>
